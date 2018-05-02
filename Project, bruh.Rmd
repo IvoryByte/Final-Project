@@ -34,5 +34,7 @@ movies2000 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2000"
 movies1999 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1999")
 movies1998 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1998")
 
+title <- html_nodes(movies2016, "#top_movies_main .articleLink")
+score <- html_nodes(movies2016, "#top_movies_main .tMeterScore")
 
 ```
