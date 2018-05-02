@@ -9,3 +9,30 @@ output: html_document
 library(tidyverse)
 library(rvest)
 ```
+
+```{r}
+movies2018 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2018")
+movies2017 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2017")
+movies2016 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2016")
+movies2015 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2015")
+movies2014 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2014")
+movies2013 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2013")
+movies2012 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2012")
+movies2011 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2011")
+movies2010 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2010")
+movies2009 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2009")
+movies2009 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2009")
+movies2008 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2008")
+movies2007 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2007")
+movies2006 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2006")
+movies2005 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2005")
+movies2004 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2004")
+movies2003 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2003")
+movies2002 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2002")
+movies2001 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2001")
+movies2000 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2000")
+movies1999 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1999")
+movies1998 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1998")
+
+
+```
