@@ -37,4 +37,27 @@ movies1998 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1998"
 title <- html_nodes(movies2016, "#top_movies_main .articleLink")
 score <- html_nodes(movies2016, "#top_movies_main .tMeterScore")
 
+
+
+
+title <- html_nodes(movies2007, "#top_movies_main .articleLink")
+score <- html_nodes(movies2007, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2006, "#top_movies_main .articleLink")
+score <- html_nodes(movies2006, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2005, "#top_movies_main .articleLink")
+score <- html_nodes(movies2005, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2004, "#top_movies_main .articleLink")
+score <- html_nodes(movies2004, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2003, "#top_movies_main .articleLink")
+score <- html_nodes(movies2003, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2002, "#top_movies_main .articleLink")
+score <- html_nodes(movies2002, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2001, "#top_movies_main .articleLink")
+score <- html_nodes(movies2001, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies2000, "#top_movies_main .articleLink")
+score <- html_nodes(movies2000, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies1999, "#top_movies_main .articleLink")
+score <- html_nodes(movies1999, "#top_movies_main .tMeterScore")
+title <- html_nodes(movies1998, "#top_movies_main .articleLink")
+score <- html_nodes(movies1998, "#top_movies_main .tMeterScore")
 ```
