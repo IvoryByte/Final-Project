@@ -79,6 +79,11 @@ title1998 <- html_nodes(movies1998, "#top_movies_main .articleLink")
 score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")
 
 tib2018 <- tibble(title2018, score2018)
+# *20
+
+Popular_movies <- tib2018 %>%
+  full_join(tib2017)%>%
+  etc 
 
 
 ```
