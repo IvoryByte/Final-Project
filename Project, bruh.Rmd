@@ -35,6 +35,7 @@ movies1999 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1999"
 movies1998 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1998")
 
 title2018 <- html_nodes(movies2018, "#top_movies_main .articleLink")
+sub("unstyled articleLink\\\">\\\n(.*)(2018)</a>\" *", "\\1", title2018)
 score2018 <- html_nodes(movies2018, "#top_movies_main .tMeterScore")%>%
   parse_number() 
 title2017 <- html_nodes(movies2017, "#top_movies_main .articleLink")
@@ -76,7 +77,7 @@ score2000 <- html_nodes(movies2000, "#top_movies_main .tMeterScore")
 title1999 <- html_nodes(movies1999, "#top_movies_main .articleLink")
 score1999 <- html_nodes(movies1999, "#top_movies_main .tMeterScore")
 title1998 <- html_nodes(movies1998, "#top_movies_main .articleLink")
-score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")
+score1998 <- htx_vies1998, "#top_movies_main .tMeterScore")
 
 tib2018 <- tibble(title2018, score2018)
 # *20
