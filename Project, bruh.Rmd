@@ -10,7 +10,7 @@ library(tidyverse)
 library(rvest)
 ```
 
-```{r}
+```{r Top Movies by Year}
 movies2018 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2018")
 movies2017 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2017")
 movies2016 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2016")
@@ -81,9 +81,30 @@ score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")
 tib2018 <- tibble(title2018, score2018)
 # *20
 
+tib2001 <- tibble(title2001, score2001)
+tib2000 <- tible(ttle2000, score2000)
+tib1999 <- tibble(title1999, score1999)
+tib1998 <- tibble(title1998, score1998)
+
+#Will need to make year into variable for each
+
 Popular_movies <- tib2018 %>%
   full_join(tib2017)%>%
   etc 
+#tidy it, variables should be year, score, and title 
 
+Popular_movies %>%
+  group_by(year) %>%
+  summarize(
+    score = score,
+    title = title,
+    averagescore = mean(score)
+  ) %>%
+  ungroup() %>%
+  ggplot(aes(x = year)) +
+  geom_point(aes(y = score, label = title)) +
+  geom_line(aes(y = averagescore)) +
+  geom_text(data=subset(Popular_movies, score > 99 ), 
+              check_overlap = TRUE, size = 2.5, nudge_y = 1)
 
 ```
