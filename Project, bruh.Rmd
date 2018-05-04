@@ -34,52 +34,114 @@ movies2000 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=2000"
 movies1999 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1999")
 movies1998 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1998")
 
-title2018 <- html_nodes(movies2018, "#top_movies_main .articleLink")
-sub("unstyled articleLink\\\">\\\n(.*)(2018)</a>\" *", "\\1", title2018)
-score2018 <- html_nodes(movies2018, "#top_movies_main .tMeterScore")%>%
-  parse_number() 
-title2017 <- html_nodes(movies2017, "#top_movies_main .articleLink")
-score2017 <- html_nodes(movies2017, "#top_movies_main .tMeterScore")
-title2016 <- html_nodes(movies2016, "#top_movies_main .articleLink")
-score2016 <- html_nodes(movies2016, "#top_movies_main .tMeterScore")
-title2015 <- html_nodes(movies2015, "#top_movies_main .articleLink")
-score2015 <- html_nodes(movies2015, "#top_movies_main .tMeterScore")
-title2014 <- html_nodes(movies2014, "#top_movies_main .articleLink")
-score2014 <- html_nodes(movies2014, "#top_movies_main .tMeterScore")
-title2013 <- html_nodes(movies2013, "#top_movies_main .articleLink")
-score2013 <- html_nodes(movies2013, "#top_movies_main .tMeterScore")
-title2012 <- html_nodes(movies2012, "#top_movies_main .articleLink")
-score2012 <- html_nodes(movies2012, "#top_movies_main .tMeterScore")
-title2011 <- html_nodes(movies2011, "#top_movies_main .articleLink")
-score2011 <- html_nodes(movies2011, "#top_movies_main .tMeterScore")
-title2010 <- html_nodes(movies2010, "#top_movies_main .articleLink")
-score2010 <- html_nodes(movies2010, "#top_movies_main .tMeterScore")
-title2009 <- html_nodes(movies2009, "#top_movies_main .articleLink")
-score2009 <- html_nodes(movies2009, "#top_movies_main .tMeterScore")
-title2008 <- html_nodes(movies2008, "#top_movies_main .articleLink")
-score2008 <- html_nodes(movies2008, "#top_movies_main .tMeterScore")
-title2007 <- html_nodes(movies2007, "#top_movies_main .articleLink")
-score2007 <- html_nodes(movies2007, "#top_movies_main .tMeterScore")
-title2006 <- html_nodes(movies2006, "#top_movies_main .articleLink")
-score2006 <- html_nodes(movies2006, "#top_movies_main .tMeterScore")
-title2005 <- html_nodes(movies2005, "#top_movies_main .articleLink")
-score2005 <- html_nodes(movies2005, "#top_movies_main .tMeterScore")
-title2004 <- html_nodes(movies2004, "#top_movies_main .articleLink")
-score2004 <- html_nodes(movies2004, "#top_movies_main .tMeterScore")
-title2003 <- html_nodes(movies2003, "#top_movies_main .articleLink")
-score2003 <- html_nodes(movies2003, "#top_movies_main .tMeterScore")
-title2002 <- html_nodes(movies2002, "#top_movies_main .articleLink")
-score2002 <- html_nodes(movies2002, "#top_movies_main .tMeterScore")
-title2001 <- html_nodes(movies2001, "#top_movies_main .articleLink")
-score2001 <- html_nodes(movies2001, "#top_movies_main .tMeterScore")
-title2000 <- html_nodes(movies2000, "#top_movies_main .articleLink")
-score2000 <- html_nodes(movies2000, "#top_movies_main .tMeterScore")
-title1999 <- html_nodes(movies1999, "#top_movies_main .articleLink")
-score1999 <- html_nodes(movies1999, "#top_movies_main .tMeterScore")
-title1998 <- html_nodes(movies1998, "#top_movies_main .articleLink")
-score1998 <- htx_vies1998, "#top_movies_main .tMeterScore")
 
-tib2018 <- tibble(title2018, score2018)
+title2018 <- html_nodes(movies2018, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2018)")
+score2018 <- html_nodes(movies2018, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+") %>%
+  parse_double()
+title2017 <- html_nodes(movies2017, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2017)")
+score2017 <- html_nodes(movies2017, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2016 <- html_nodes(movies2016, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2016)")
+score2016 <- html_nodes(movies2016, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2015 <- html_nodes(movies2015, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2015)")
+score2015 <- html_nodes(movies2015, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2014 <- html_nodes(movies2014, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2014)")
+score2014 <- html_nodes(movies2014, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2013 <- html_nodes(movies2013, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2013)")
+score2013 <- html_nodes(movies2013, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2012 <- html_nodes(movies2012, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2012)")
+score2012 <- html_nodes(movies2012, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2011 <- html_nodes(movies2011, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2011)")
+score2011 <- html_nodes(movies2011, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2010 <- html_nodes(movies2010, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2010)")
+score2010 <- html_nodes(movies2010, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2009 <- html_nodes(movies2009, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2009)")
+score2009 <- html_nodes(movies2009, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2008 <- html_nodes(movies2008, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2008)")
+score2008 <- html_nodes(movies2008, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2007 <- html_nodes(movies2007, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2007)")
+score2007 <- html_nodes(movies2007, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2006 <- html_nodes(movies2006, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2006)")
+score2006 <- html_nodes(movies2006, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2005 <- html_nodes(movies2005, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2005)")
+score2005 <- html_nodes(movies2005, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2004 <- html_nodes(movies2004, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2004)")
+score2004 <- html_nodes(movies2004, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2003 <- html_nodes(movies2003, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2003)")
+score2003 <- html_nodes(movies2003, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2002 <- html_nodes(movies2002, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2002)")
+score2002 <- html_nodes(movies2002, "#top_movies_main .tMeterScore")
+title2001 <- html_nodes(movies2001, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2001)")
+score2001 <- html_nodes(movies2001, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title2000 <- html_nodes(movies2000, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(2000)")
+score2000 <- html_nodes(movies2000, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title1999 <- html_nodes(movies1999, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(1999)")
+score1999 <- html_nodes(movies1999, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+title1998 <- html_nodes(movies1998, "#top_movies_main .articleLink")%>%
+  str_extract("  (.*)(1998)")
+score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")%>%
+  str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
+  parse_double()
+
+tib2018 <- tibble(title2018, score2018) %>%
+  separate(title2018, into = c("Title", "Year", sep = "\\(", convert = TRUE)
+
 # *20
 
 tib2007 <- tibble(title2007, score2007)
@@ -94,6 +156,7 @@ tib1999 <- tibble(title1999, score1999)
 tib1998 <- tibble(title1998, score1998)
 
 #Will need to make year into variable for each
+#should be able to do with separate funtion, put "(" as the separator
 
 Popular_movies <- tib2018 %>%
   full_join(tib2017)%>%
