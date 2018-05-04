@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(stringr)
 library(rvest)
 ```
 
@@ -37,107 +38,128 @@ movies1998 <- read_html("https://www.rottentomatoes.com/top/bestofrt/?year=1998"
 
 ```{r url to nodes}
 title2018 <- html_nodes(movies2018, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2018)")
+  str_extract("  (.*)(2018)") %>%
+  str_trim()
 score2018 <- html_nodes(movies2018, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+") %>%
   parse_double()
 title2017 <- html_nodes(movies2017, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2017)")
+  str_extract("  (.*)(2017)")%>%
+  str_trim()
 score2017 <- html_nodes(movies2017, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2016 <- html_nodes(movies2016, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2016)")
+  str_extract("  (.*)(2016)")%>%
+  str_trim()
 score2016 <- html_nodes(movies2016, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2015 <- html_nodes(movies2015, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2015)")
+  str_extract("  (.*)(2015)")%>%
+  str_trim()
 score2015 <- html_nodes(movies2015, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2014 <- html_nodes(movies2014, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2014)")
+  str_extract("  (.*)(2014)")%>%
+  str_trim()
 score2014 <- html_nodes(movies2014, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2013 <- html_nodes(movies2013, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2013)")
+  str_extract("  (.*)(2013)")%>%
+  str_trim()
 score2013 <- html_nodes(movies2013, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2012 <- html_nodes(movies2012, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2012)")
+  str_extract("  (.*)(2012)")%>%
+  str_trim()
 score2012 <- html_nodes(movies2012, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2011 <- html_nodes(movies2011, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2011)")
+  str_extract("  (.*)(2011)")%>%
+  str_trim()
 score2011 <- html_nodes(movies2011, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2010 <- html_nodes(movies2010, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2010)")
+  str_extract("  (.*)(2010)")%>%
+  str_trim()
 score2010 <- html_nodes(movies2010, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2009 <- html_nodes(movies2009, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2009)")
+  str_extract("  (.*)(2009)")%>%
+  str_trim()
 score2009 <- html_nodes(movies2009, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2008 <- html_nodes(movies2008, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2008)")
+  str_extract("  (.*)(2008)")%>%
+  str_trim()
 score2008 <- html_nodes(movies2008, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2007 <- html_nodes(movies2007, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2007)")
+  str_extract("  (.*)(2007)")%>%
+  str_trim()
 score2007 <- html_nodes(movies2007, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2006 <- html_nodes(movies2006, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2006)")
+  str_extract("  (.*)(2006)")%>%
+  str_trim()
 score2006 <- html_nodes(movies2006, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2005 <- html_nodes(movies2005, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2005)")
+  str_extract("  (.*)(2005)")%>%
+  str_trim()
 score2005 <- html_nodes(movies2005, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2004 <- html_nodes(movies2004, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2004)")
+  str_extract("  (.*)(2004)")%>%
+  str_trim()
 score2004 <- html_nodes(movies2004, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2003 <- html_nodes(movies2003, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2003)")
+  str_extract("  (.*)(2003)")%>%
+  str_trim()
 score2003 <- html_nodes(movies2003, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2002 <- html_nodes(movies2002, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2002)")
+  str_extract("  (.*)(2002)")%>%
+  str_trim()
 score2002 <- html_nodes(movies2002, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2001 <- html_nodes(movies2001, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2001)")
+  str_extract("  (.*)(2001)")%>%
+  str_trim()
 score2001 <- html_nodes(movies2001, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title2000 <- html_nodes(movies2000, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(2000)")
+  str_extract("  (.*)(2000)")%>%
+  str_trim()
 score2000 <- html_nodes(movies2000, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title1999 <- html_nodes(movies1999, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(1999)")
+  str_extract("  (.*)(1999)")%>%
+  str_trim()
 score1999 <- html_nodes(movies1999, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 title1998 <- html_nodes(movies1998, "#top_movies_main .articleLink")%>%
-  str_extract("  (.*)(1998)")
+  str_extract("  (.*)(1998)")%>%
+  str_trim()
 score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
@@ -146,147 +168,147 @@ score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")%>%
 ```{r strings to tibbles}
 tib2018 <- tibble(title2018, score2018) %>%
   mutate(
-    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2018,
     Score = score2018
   )
 tib2017 <- tibble(title2017, score2017) %>%
   mutate(
-    Year = str_extract(title2017, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2017, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2017,
     Score = score2017
   )
 tib2016 <- tibble(title2016, score2016) %>%
   mutate(
-    Year = str_extract(title2016, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2016, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2016,
     Score = score2016
   )
 tib2015 <- tibble(title2015, score2015) %>%
   mutate(
-    Year = str_extract(title2015, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2015, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2015,
     Score = score2015
   )
 tib2014 <- tibble(title2014, score2014) %>%
   mutate(
-    Year = str_extract(title2014, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2014, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2014,
     Score = score2014
   )
 tib2013 <- tibble(title2013, score2013) %>%
   mutate(
-    Year = str_extract(title2013, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2013, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2013,
     Score = score2013
   )
 tib2012 <- tibble(title2012, score2012) %>%
   mutate(
-    Year = str_extract(title2012, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2012, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2012,
     Score = score2012
   )
 tib2011 <- tibble(title2011, score2011) %>%
   mutate(
-    Year = str_extract(title2011, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2011, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2011,
     Score = score2011
   )
 tib2010 <- tibble(title2010, score2010) %>%
   mutate(
-    Year = str_extract(title2010, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2010, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2010,
     Score = score2010
   )
 tib2009 <- tibble(title2009, score2009) %>%
   mutate(
-    Year = str_extract(title2009, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2009, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2009,
     Score = score2009
   )
 tib2008 <- tibble(title2008, score2008) %>%
   mutate(
-    Year = str_extract(title2008, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2008, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2008,
     Score = score2008
   )
 tib2007 <- tibble(title2007, score2007)%>%
   mutate(
-    Year = str_extract(title2007, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+    Year = str_extract(title2007, "[1,2,3,4,5,6,7,8,9,0]{4}$")) %>%
   rename(
     Title = title2007,
     Score = score2007
   )
 tib2006 <- tibble(title2006, score2006)%>%
   mutate(
-    Year = str_extract(title2006, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2006, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2006,
     Score = score2006
   )
 tib2005 <- tibble(title2005, score2005)%>%
   mutate(
-    Year = str_extract(title2005, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2005, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2005,
     Score = score2005
   )
 tib2004 <- tibble(title2004, score2004)%>%
   mutate(
-    Year = str_extract(title2004, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2004, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2004,
     Score = score2004
   )
 tib2003 <- tibble(title2003, score2003)%>%
   mutate(
-    Year = str_extract(title2003, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2003, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2003,
     Score = score2003
   )
 tib2002 <- tibble(title2002, score2002)%>%
   mutate(
-    Year = str_extract(title2002, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2002, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2002,
     Score = score2002
   )
 tib2001 <- tibble(title2001, score2001)%>%
   mutate(
-    Year = str_extract(title2001, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2001, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2001,
     Score = score2001
   )
 tib2000 <- tibble(title2000, score2000)%>%
   mutate(
-    Year = str_extract(title2000, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title2000, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title2000,
     Score = score2000
   )
 tib1999 <- tibble(title1999, score1999)%>%
   mutate(
-    Year = str_extract(title1999, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title1999, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title1999,
     Score = score1999
   )
 tib1998 <- tibble(title1998, score1998)%>%
   mutate(
-    Year = str_extract(title1998, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+    Year = str_extract(title1998, "[1,2,3,4,5,6,7,8,9,0]{4}$"))%>%
   rename(
     Title = title1998,
     Score = score1998
@@ -324,10 +346,19 @@ Popular_movies %>%
     AverageScore = mean(Score)
   ) %>%
   ungroup() %>%
-  ggplot(aes(x = Year)) +
-  geom_point(aes(y = Score, label = Title)) +
+  ggplot(aes(x = Year, label = Title)) +
+  geom_point(aes(y = Score)) +
   geom_line(aes(y = AverageScore)) +
-  geom_text(data=subset(Popular_movies, score > 99 ), 
+  geom_text(data=subset(Popular_movies, Score > 99 ), aes(y = Score), 
               check_overlap = TRUE, size = 2.5, nudge_y = 1)
+#trying to get graph to work
 
+Popular_movies %>%
+  group_by(Year) %>%
+  mutate(
+    AverageScore = mean(Score)
+  ) %>%
+  ungroup() %>%
+  ggplot(aes(x = Year)) +
+  geom_line(aes(y = AverageScore)) 
 ```
