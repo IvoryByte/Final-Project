@@ -81,8 +81,14 @@ score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")
 tib2018 <- tibble(title2018, score2018)
 # *20
 
+tib2007 <- tibble(title2007, score2007)
+tib2006 <- tibble(title2006, score2006)
+tib2005 <- tibble(title2005, score2005)
+tib2004 <- tibble(title2004, score2004)
+tib2003 <- tibble(title2003, score2003)
+tib2002 <- tibble(title2002, score2002)
 tib2001 <- tibble(title2001, score2001)
-tib2000 <- tible(ttle2000, score2000)
+tib2000 <- tibble(title2000, score2000)
 tib1999 <- tibble(title1999, score1999)
 tib1998 <- tibble(title1998, score1998)
 
