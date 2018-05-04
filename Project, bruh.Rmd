@@ -139,24 +139,87 @@ score1998 <- html_nodes(movies1998, "#top_movies_main .tMeterScore")%>%
   str_extract("[1,2,3,4,5,6,7,8,9,0]+")%>%
   parse_double()
 
+
 tib2018 <- tibble(title2018, score2018) %>%
-  separate(title2018, into = c("Title", "Year", sep = "\\(", convert = TRUE)
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
 
-# *20
+#Oops, not generalizable for some reason
 
-tib2007 <- tibble(title2007, score2007)
-tib2006 <- tibble(title2006, score2006)
-tib2005 <- tibble(title2005, score2005)
-tib2004 <- tibble(title2004, score2004)
-tib2003 <- tibble(title2003, score2003)
-tib2002 <- tibble(title2002, score2002)
-tib2001 <- tibble(title2001, score2001)
-tib2000 <- tibble(title2000, score2000)
-tib1999 <- tibble(title1999, score1999)
-tib1998 <- tibble(title1998, score1998)
-
-#Will need to make year into variable for each
-#should be able to do with separate funtion, put "(" as the separator
+tib2007 <- tibble(title2007, score2007)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}")) %>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2006 <- tibble(title2006, score2006)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2005 <- tibble(title2005, score2005)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2004 <- tibble(title2004, score2004)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2003 <- tibble(title2003, score2003)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2002 <- tibble(title2002, score2002)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2001 <- tibble(title2001, score2001)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib2000 <- tibble(title2000, score2000)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib1999 <- tibble(title1999, score1999)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
+tib1998 <- tibble(title1998, score1998)%>%
+  mutate(
+    Year = str_extract(title2018, "[1,2,3,4,5,6,7,8,9,0]{4}"))%>%
+  rename(
+    Title = title2018,
+    Score = score2018
+  )
 
 Popular_movies <- tib2018 %>%
   full_join(tib2017)%>%
@@ -166,14 +229,14 @@ Popular_movies <- tib2018 %>%
 Popular_movies %>%
   group_by(year) %>%
   summarize(
-    score = score,
-    title = title,
-    averagescore = mean(score)
+    Score = Score,
+    Title = Title,
+    AverageScore = mean(Score)
   ) %>%
   ungroup() %>%
-  ggplot(aes(x = year)) +
-  geom_point(aes(y = score, label = title)) +
-  geom_line(aes(y = averagescore)) +
+  ggplot(aes(x = Year)) +
+  geom_point(aes(y = Score, label = Title)) +
+  geom_line(aes(y = AverageScore)) +
   geom_text(data=subset(Popular_movies, score > 99 ), 
               check_overlap = TRUE, size = 2.5, nudge_y = 1)
 
