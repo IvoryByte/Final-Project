@@ -346,19 +346,33 @@ Popular_movies %>%
     AverageScore = mean(Score)
   ) %>%
   ungroup() %>%
+  type_convert() %>%
   ggplot(aes(x = Year, label = Title)) +
   geom_point(aes(y = Score)) +
   geom_line(aes(y = AverageScore)) +
   geom_text(data=subset(Popular_movies, Score > 99 ), aes(y = Score), 
               check_overlap = TRUE, size = 2.5, nudge_y = 1)
-#trying to get graph to work
-
 Popular_movies %>%
   group_by(Year) %>%
   mutate(
     AverageScore = mean(Score)
   ) %>%
   ungroup() %>%
+  type_convert() %>%
   ggplot(aes(x = Year)) +
-  geom_line(aes(y = AverageScore)) 
+  geom_point(aes(y = Score), alpha = .3) +
+  geom_line(aes(y = AverageScore), color = "maroon") 
+#trying to get graph to work
+
+Popular_movies %>%
+  group_by(Year) %>%
+  summarize(
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_line(aes(y = AverageScore))
+#Got rid of 2018 due to incomplete sample. There have been only 92 films so far. This means that it includes bad and good films, not just good ones.
 ```
