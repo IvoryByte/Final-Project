@@ -524,12 +524,30 @@ rescale01 <- function(x) {
   rng <- range(x, na.rm = TRUE)
   (x - rng[1]) / (rng[2] - rng[1]) }
 
-
 #Combined plots
 Popular_movies %>%
   group_by(Year) %>%
    mutate(
-    AdjustedReviewers = ((rescale01(Review_num))*100),
+    AverageReviewers = mean(Review_num),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_jitter(aes(y = Score),width = 0.08, alpha = .3, color = "red") +
+  geom_line(aes(y = AverageScore), color = "maroon") +
+  geom_jitter(aes( y = Review_num), width = .1, alpha = .3, color = "blue") +
+  geom_line(aes(y = AverageReviewers), color = "navy") 
+
+
+#Combined plots rescaled
+Popular_movies %>%
+  mutate(
+    AdjustedReviewers = ((rescale01(Review_num))*100)
+  ) %>%
+  group_by(Year) %>%
+   mutate(
     AverageReviewers = mean(AdjustedReviewers),
     AverageScore = mean(Score)
   ) %>%
@@ -539,7 +557,61 @@ Popular_movies %>%
   ggplot(aes(x = Year)) +
   geom_jitter(aes(y = Score),width = 0.08, alpha = .3, color = "red") +
   geom_line(aes(y = AverageScore), color = "maroon") +
-  geom_jitter(aes( y = AdjustedReviewers, color = AverageScore), width = .1, alpha = .3, color = "blue") +
+  geom_jitter(aes( y = AdjustedReviewers), width = .1, alpha = .3, color = "blue") +
   geom_line(aes(y = AverageReviewers), color = "navy") 
+
+
+#Combined plots, both scaled
+Popular_movies %>%
+  mutate(
+    AdjustedReviewers = ((rescale01(Review_num))),
+    AdjustedScore = ((rescale01(Score)))
+  ) %>%
+  group_by(Year) %>%
+   mutate(
+    AverageReviewers = mean(AdjustedReviewers),
+    AverageScore = mean(AdjustedScore)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_jitter(aes(y = AdjustedScore),width = 0.08, alpha = .3, color = "red") +
+  geom_line(aes(y = AverageScore), color = "maroon") +
+  geom_jitter(aes( y = AdjustedReviewers), width = .1, alpha = .3, color = "blue") +
+  geom_line(aes(y = AverageReviewers), color = "navy") 
+
+#Combined, new method
+Popular_movies %>%
+  filter( Year != 2018) %>%
+  group_by(Year) %>%
+   mutate(
+    AverageReviewers = mean(Review_num),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  gather(Score, Review_num , key= "Key", value = "Number") %>%
+  ggplot(aes(x = Year, color = Key)) +
+  geom_jitter(aes(y = Number), alpha = .3, width = .08) +
+  geom_line(aes( y = AverageScore), color = "navy") +
+  geom_line(aes( y = AverageReviewers), color = "maroon")
+
+#Smooth Instead?
+Popular_movies %>%
+  filter( Year != 2018) %>%
+  group_by(Year) %>%
+   mutate(
+    AverageReviewers = mean(Review_num),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  gather(Score, Review_num , key= "Key", value = "Number") %>%
+  ggplot(aes(x = Year, y = Number, color = Key)) +
+  geom_jitter(alpha = .3, width = .08) +
+  geom_smooth()
+  
+
 
 ```
