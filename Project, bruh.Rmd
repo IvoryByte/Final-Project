@@ -431,32 +431,13 @@ Popular_movies <- tib2018 %>%
 ```
 
 
-```{r, include = FALSE}
+```{r, audience scores, include = FALSE}
 
 audienceScore2017 <- tibble(
-Title = c("Lady Bird (2017",
-"Get Out (2017",
-"Dunkirk (2017",
-"Coco (2017",
-"The Big Sick (2017",
-"Wonder Woman (2017",
-"Logan (2017",
-"Star Wars: The Last Jedi (2017",
-"The Shape of Water (2017",
-"The Florida Project (2017",
-"Baby Driver (2017",
-"Thor: Ragnarok (2017",
-"Three Billboards Outside Ebbing, Missouri (2017",
-"War for the Planet of the Apes (2017",
-"Spider-Man: Homecoming (2017",
-"I Am Not Your Negro (2017",
-"Hidden Figures (2017",
-"Logan Lucky (2017",
-"The Salesman (Forushande) (2017",
-"The Disaster Artist (2017"),
-Audience_Review = c(79, 86, 81, 94, 88, 88, 90, 47, 74, 79, 86, 87, 86, 84, 88, 84, 93,75, 83, 87))
+Title = c("Lady Bird (2017","Get Out (2017","Dunkirk (2017","Coco (2017","The Big Sick (2017","Wonder Woman (2017","Logan (2017","Star Wars: The Last Jedi (2017","The Shape of Water (2017","The Florida Project (2017","Baby Driver (2017","Thor: Ragnarok (2017","Three Billboards Outside Ebbing, Missouri (2017","War for the Planet of the Apes (2017","Spider-Man: Homecoming (2017","I Am Not Your Negro (2017","Hidden Figures (2017","Logan Lucky (2017","The Salesman (Forushande) (2017","The Disaster Artist (2017"), Audience_Review = c(79, 86, 81, 94, 88, 88, 90, 47, 74, 79, 86, 87, 86, 84, 88, 84, 93,75, 83, 87))
 
 
+audienceScore1998 <- tibble(Title = c("The Truman Show (1998", "Antz (1998", "Shakespeare in Love (1998", "Saving Private Ryan (1998", "Gods and Monsters (1998", "Out of Sight (1998", "A Bug's Life (1998", "Central Station (Central do Brasil) (1998", "The Dreamlife of Angels (1998", "Rushmore (1998", "Ever After: A Cinderella Story (1998", "A Simple Plan (1998", "Cure (1998", "One True Thing (1998", "The Apostle (1998", "Pleasantville (1998", "Mulan (1998", "Pi (1998", "Hilary and Jackie (1998", "The Parent Trap (1998"), Audience_Review = c(88,52,80,95,83,74,72,95,83,91,84,81,83,71,78,79,85,85,83,70))
 ```
 
 
@@ -657,6 +638,10 @@ Popular_movies %>%
   )) %>%
   ggplot(aes( x = Score)) +
   geom_density(aes( color = Year)) 
+
+
+#audience score comparisons
+
 
 ```
 
