@@ -671,7 +671,7 @@ ScoreCompare %>%
 ```
 
 
-```{r, our beautiful graphs, echo= FALSE, warning= FALSE}
+```{r, Critic Score Plots, echo= FALSE, message= FALSE}
 
 rescale01 <- function(x) {
   rng <- range(x, na.rm = TRUE)
@@ -713,8 +713,9 @@ Popular_movies %>%
   geom_density(aes( color = Year)) +
   ggtitle("Density Plot of Critic Scores by Year")
 #Density plot showing the distribution for each group of 2-3 years
+```
 
-
+```{r, Reviewer Plots, echo= FALSE, message = FALSE}
 Popular_movies %>%
   filter( Year != 2018) %>%
   mutate(Year = fct_collapse(Year,
@@ -728,7 +729,8 @@ Popular_movies %>%
   )) %>%
   ggplot(aes( x = Review_num)) +
   geom_density(aes( color = Year))+
-  ggtitle("Number of Reviewers by Year")
+  ggtitle("Number of Reviewers by Year") +
+  xlab("Reviews")
 #Reviewer density plot
 
 Popular_movies %>%
@@ -742,9 +744,11 @@ Popular_movies %>%
   ggplot(aes(x = Year)) +
   geom_jitter(aes(y = Review_num),width = 0.08, alpha = .3) +
   geom_line(aes(y = AverageReviews), color = "navy") +
-  ggtitle("Number of Reviewers by Year")
+  ggtitle("Number of Reviewers by Year") +
+  ylab("Reviews")
+```
 
-
+```{r, Comparing plots, echo= FALSE, message= FALSE}
 Popular_movies %>%
   group_by(Year) %>%
    mutate(
@@ -780,14 +784,16 @@ Popular_movies %>%
   geom_line(aes(y = AverageReviewers), color = "navy")+
   ggtitle("Scores and Review Numbers by Year")
 #shows the relationship between Review numbers (blue) and Scores (red)
+```
 
-
+```{r, Movies that received 100, echo= FALSE, message= FALSE}
 Popular_movies%>%
   filter(Year != 2018, Score == 100) %>%
   arrange(desc(Year), desc(Review_num)) %>%
-  print(length = Inf)
+  print(n = Inf)
+```
 
-
+```{r, Audience vs Critics, echo= FALSE, message= FALSE}
 ScoreCompare %>%
   gather(Score, Audience_Review, key = "Reviewer", value = Score) %>%
   mutate( Reviewer = fct_recode(Reviewer,
