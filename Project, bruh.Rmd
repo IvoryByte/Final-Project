@@ -2,9 +2,7 @@
 title: "Rotten Tomatoes"
 author: "Emily Schrader and Katie Voegele"
 date: "5/15/2018"
-output:
-  html_document: default
-  pdf_document: default
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -19,8 +17,7 @@ library(rvest)
   
 Our analysis focussed on lists of movies from Rotten Tomatoes giving the top 100 movies in any given year. We took the most recent 20 of these lists with their critic scores and number of reviews in order to ask the following questions: Have the scores of movies increased over time? If so, why? Does the number of reviews come into play? Audience score? how do movies with a 100% critic score fare in other categories?  
 Our goal in this analysis is not to difinitvely answer if movies have gotten better, but to see if there is statistical backing to the trend of recent movies getting high scores. Are the critics giving higher scores? Are audiences getting more involved in scoring online?  
-
-### Are movies getting better?
+Are movies getting better?
 
 
 ```{r saving urls, include=FALSE}
@@ -687,10 +684,6 @@ ScoreCompare %>%
 
 ```
 
-Our preliminary graph shows that the average score of films has gone up over the past 20 years. This line graph is simply the average score per year, connected to show the basic trend. The points show each individual score, with a slight jitter added for visibility.  
-Next, we hve the distribution of critic scores, where we can see the majority of films lie between 80 and 100. The movies below 80 tend to be from before 2010, with the lowest score in 1998.  
-The density plot below shows similar information, but with lines and clearer data.
-
 ```{r Critic Score Plots, echo= FALSE, message= FALSE}
 #Start of things that show up
 
@@ -711,7 +704,11 @@ Popular_movies %>%
   geom_line(aes(y = AverageScore), color = "maroon") +
   ggtitle("Critic Scores by Year")
 #Graph of movies by year plain
-
+```
+Our preliminary graph shows that the average score of films has gone up over the past 20 years. This line graph is simply the average score per year, connected to show the basic trend. The points show each individual score, with a slight jitter added for visibility.  
+Next, we have the distribution of critic scores, where we can see the majority of films lie between 80 and 100. The movies below 80 tend to be from before 2010, with the lowest score in 1998.  
+The density plot below shows similar information, but with lines and clearer data.
+```{r graphs with words beforehand, echo = FALSE, message=FALSE}
 Popular_movies %>%
   filter( Year != 2018) %>%
   ggplot(aes( x = Score)) +
@@ -736,8 +733,6 @@ Popular_movies %>%
 #Density plot showing the distribution for each group of 2-3 years
 ```
 
- The average number of reviewers also goes up over time. What is interesting about this data is that we don't see a spike in the data at any point. Rotten Tomatoes was launched in August of 1998 and has only grown since then, and our data does reflect that throught the increase in review numbers. The increase is not as large as one may expect, with Rotten Tomatoes being a go-to review site. This suggests that perhaps the number of reviews depends on the movie itself more than when the movie was released. Or, that Rotten Tomatoes has gained popularity and notariety, but has not grown in its reveiwer numbers. Either way, the number of reviewers does not seem to have an impact in scores, and .
- 
 ```{r Reviewer Plots, echo= FALSE, message = FALSE}
 Popular_movies %>%
   filter( Year != 2018) %>%
@@ -770,7 +765,7 @@ Popular_movies %>%
   ggtitle("Number of Reviewers by Year") +
   ylab("Reviews")
 ```
-
+The average number of reviewers also goes up over time. What is interesting about this data is that we don't see a spike in the data at any point. Rotten Tomatoes was launched in August of 1998 and has only grown since then, and our data does reflect that throught the increase in review numbers. The increase is not as large as one may expect, with Rotten Tomatoes being a go-to review site. This suggests that perhaps the number of reviews depends on the movie itself more than when the movie was released. Or, that Rotten Tomatoes has gained popularity and notariety, but has not grown in its reveiwer numbers. Either way, the number of reviewers does not seem to have an impact in scores, and does not determine which movies are in the top 100 for each year.
 ```{r Comparing plots, echo= FALSE, message= FALSE}
 Popular_movies %>%
   group_by(Year) %>%
@@ -808,14 +803,15 @@ Popular_movies %>%
   ggtitle("Scores and Review Numbers by Year")
 #shows the relationship between Review numbers (blue) and Scores (red)
 ```
-
+This list is a tibble of movies that recieved a 100% from critics by year. This list shows how 2017 and 2016 have had more 100% ratings than any other year. It furthers our point of average scores increasing, based on the fact that these movies are all recent rather than from 1998.
 ```{r Movies that received 100, echo= FALSE, message= FALSE}
 Popular_movies%>%
   filter(Year != 2018, Score == 100) %>%
   arrange(desc(Year), desc(Review_num)) %>%
   print(n = Inf)
 ```
-The plots below compare a select group of movies' critic scores to their audience scores. 
+The plots below compare a select group of movies' critic scores to their audience scores. To get the audience scores, we had to look ta each movie's page individually, so we only did the top 20 movies 2017, 2008, and 1998. Critics scores were cosistently higher than audience scores, and audiences even had outliers that were extremely low in 1998 and 2017 (Antz and Star Wars). The box plot shows the lower scores as outliers in better detail. They are far lower than the lowest critic score. This tells us that audience score is not a large factor in how great the movies are, as both Antz and Star Wars are in the top ten of their respective years. This discrepancy was a surprise, but we suspect that audience scores are brought down by people being more opinionated; only giving very high or very low reviews.  
+The tibbles document rare cases where the audience score matched the critic score and cases where the audience score was higher than the critic score. Between these two parameter sets, there are only five films, and all of the films with higher audience scores are from 1998. The rarity of such cases further shows how critics scores increase over time.
 ```{r Audience vs Critics, echo= FALSE, message= FALSE}
 ScoreCompare %>%
   gather(Score, Audience_Review, key = "Reviewer", value = Score) %>%
@@ -848,12 +844,6 @@ ScoreCompare %>%
   )
 #Movies that Audience and Critics agree on
 #I put images of these movies in the folder. "~/Mscs 264 S18/Inclass/Schrader_Voegele/__59dd139766efd.jpg" and "~/Mscs 264 S18/Inclass/Schrader_Voegele/13349231_f520.jpg"
-```
-
-![Hidden Figures](~/Mscs 264 S18/Inclass/Schrader_Voegele/__59dd139766efd.jpg)
-![The Dark Knight](~/Mscs 264 S18/Inclass/Schrader_Voegele/13349231_f520.jpg)
-
-```{r Tibble, echo= FALSE, message= FALSE}
 
 ScoreCompare %>%
   filter(Audience_Review > Score) %>%
@@ -865,5 +855,5 @@ ScoreCompare %>%
 #When the audience likes it better than the critics
 #Can get images for these, too if you want
 ```
-
-
+  
+Based on our data and graphical evidence, we see how over the past 20 years, average critic scores of films have gotten higher, while audience scores, despite growning in numbers, have consistently had lower scores than the critics. Does this mean that critics are going easy on newer films? Are audiences becoming more critical? Or are movies truly getting better? We may not know the exact reasons behind this trend, but it will be interesting to see how scores change. Our prediction is that average scores will plateau in the 90% range over the next few years.
