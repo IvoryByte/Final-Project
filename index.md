@@ -11,9 +11,9 @@ Our goal in this analysis is not to difinitvely answer if movies have
 gotten better, but to see if there is statistical backing to the trend
 of recent movies getting high scores. Are the critics giving higher
 scores? Are audiences getting more involved in scoring online?  
-Are movies getting better? 
+Are movies getting better?
 
-![](Index_files/figure-markdown_strict/Critic%20Score%20Plots-1.png)
+![](index_files/figure-markdown_strict/Critic%20Score%20Plots-1.png)
 
 Our preliminary graph shows that the average score of films has gone up
 over the past 20 years. This line graph is simply the average score per
@@ -25,9 +25,9 @@ from before 2010, with the lowest score in 1998.
 The density plot below shows similar information, but with lines and
 clearer data.
 
-![](Index_files/figure-markdown_strict/graphs%20with%20words%20beforehand-1.png)![](Index_files/figure-markdown_strict/graphs%20with%20words%20beforehand-2.png)
+![](index_files/figure-markdown_strict/graphs%20with%20words%20beforehand-1.png)![](index_files/figure-markdown_strict/graphs%20with%20words%20beforehand-2.png)
 
-![](Index_files/figure-markdown_strict/Reviewer%20Plots-1.png)![](Index_files/figure-markdown_strict/Reviewer%20Plots-2.png)
+![](index_files/figure-markdown_strict/Reviewer%20Plots-1.png)![](index_files/figure-markdown_strict/Reviewer%20Plots-2.png)
 
 The average number of reviewers also goes up over time. What is
 interesting about this data is that we don't see a spike in the data at
@@ -41,7 +41,7 @@ notariety, but has not grown in its reveiwer numbers. Either way, the
 number of reviewers does not seem to have an impact in scores, and does
 not determine which movies are in the top 100 for each year.
 
-![](Index_files/figure-markdown_strict/Comparing%20plots-1.png)![](Index_files/figure-markdown_strict/Comparing%20plots-2.png)
+![](index_files/figure-markdown_strict/Comparing%20plots-1.png)![](index_files/figure-markdown_strict/Comparing%20plots-2.png)
 
 This list is a tibble of movies that recieved a 100% from critics by
 year. This list shows how 2017 and 2016 have had more 100% ratings than
@@ -106,17 +106,13 @@ films, and all of the films with higher audience scores are from 1998.
 The rarity of such cases further shows how critics scores increase over
 time.
 
+![](index_files/figure-markdown_strict/Audience%20vs%20Critics-1.png)![](index_files/figure-markdown_strict/Audience%20vs%20Critics-2.png)
 
     ## # A tibble: 2 x 5
     ##   Title             `Critic Score` `Critic Reviews`  Year `Audience Score`
     ##   <chr>                      <dbl>            <dbl> <dbl>            <dbl>
     ## 1 Hidden Figures (…           93.0              262  2017             93.0
     ## 2 The Dark Knight …           94.0              327  2008             94.0
-
-![Hidden
-Figures](~/Mscs%20264%20S18/Inclass/Schrader_Voegele/__59dd139766efd.jpg)
-![The Dark
-Knight](~/Mscs%20264%20S18/Inclass/Schrader_Voegele/13349231_f520.jpg)
 
     ## # A tibble: 3 x 5
     ##   Title             `Critic Score` `Critic Reviews`  Year `Audience Score`
