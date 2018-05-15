@@ -11,7 +11,7 @@ Our goal in this analysis is not to difinitvely answer if movies have
 gotten better, but to see if there is statistical backing to the trend
 of recent movies getting high scores. Are the critics giving higher
 scores? Are audiences getting more involved in scoring online?  
-Are movies getting better?
+Are movies getting better? 
 
 ![](Index_files/figure-markdown_strict/Critic%20Score%20Plots-1.png)
 
