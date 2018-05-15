@@ -106,7 +106,6 @@ films, and all of the films with higher audience scores are from 1998.
 The rarity of such cases further shows how critics scores increase over
 time.
 
-![](Index_files/figure-markdown_strict/Audience%20vs%20Critics-1.png)![](Index_files/figure-markdown_strict/Audience%20vs%20Critics-2.png)
 
     ## # A tibble: 2 x 5
     ##   Title             `Critic Score` `Critic Reviews`  Year `Audience Score`
