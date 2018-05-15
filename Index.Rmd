@@ -2,7 +2,7 @@
 title: "Rotten Tomatoes"
 author: "Emily Schrader and Katie Voegele"
 date: "5/15/2018"
-output: html_document
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
@@ -852,7 +852,12 @@ ScoreCompare %>%
   )
 #Movies that Audience and Critics agree on
 #I put images of these movies in the folder. "~/Mscs 264 S18/Inclass/Schrader_Voegele/__59dd139766efd.jpg" and "~/Mscs 264 S18/Inclass/Schrader_Voegele/13349231_f520.jpg"
+```
 
+![Hidden Figures](~/Mscs 264 S18/Inclass/Schrader_Voegele/__59dd139766efd.jpg)
+![The Dark Knight](~/Mscs 264 S18/Inclass/Schrader_Voegele/13349231_f520.jpg)
+
+```{r, echo= FALSE, message= FALSE}
 ScoreCompare %>%
   filter(Audience_Review > Score) %>%
   rename(
