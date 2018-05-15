@@ -27,8 +27,6 @@ clearer data.
 
 ![](index_files/figure-markdown_strict/graphs%20with%20words%20beforehand-1.png)![](index_files/figure-markdown_strict/graphs%20with%20words%20beforehand-2.png)
 
-![](index_files/figure-markdown_strict/Reviewer%20Plots-1.png)![](index_files/figure-markdown_strict/Reviewer%20Plots-2.png)
-
 The average number of reviewers also goes up over time. What is
 interesting about this data is that we don't see a spike in the data at
 any point. Rotten Tomatoes was launched in August of 1998 and has only
@@ -41,7 +39,16 @@ notariety, but has not grown in its reveiwer numbers. Either way, the
 number of reviewers does not seem to have an impact in scores, and does
 not determine which movies are in the top 100 for each year.
 
-![](index_files/figure-markdown_strict/Comparing%20plots-1.png)![](index_files/figure-markdown_strict/Comparing%20plots-2.png)
+![](index_files/figure-markdown_strict/Reviewer%20Plots-1.png)![](index_files/figure-markdown_strict/Reviewer%20Plots-2.png)
+
+These plots compare the number of reviewers to the score, showing their
+increase over time. The first plot shows the maximum number of
+reviewers, where the second shows the average number of reviewers. The
+thrid graph is scaled so that you can see both sets of data together,
+using the average reviewers. The red data shows scores, and the blue
+data shows the number of reviewers.
+
+![](index_files/figure-markdown_strict/Comparing%20plots-1.png)![](index_files/figure-markdown_strict/Comparing%20plots-2.png)![](index_files/figure-markdown_strict/Comparing%20plots-3.png)
 
 This list is a tibble of movies that recieved a 100% from critics by
 year. This list shows how 2017 and 2016 have had more 100% ratings than
@@ -98,13 +105,7 @@ tells us that audience score is not a large factor in how great the
 movies are, as both Antz and Star Wars are in the top ten of their
 respective years. This discrepancy was a surprise, but we suspect that
 audience scores are brought down by people being more opinionated; only
-giving very high or very low reviews.  
-The tibbles document rare cases where the audience score matched the
-critic score and cases where the audience score was higher than the
-critic score. Between these two parameter sets, there are only five
-films, and all of the films with higher audience scores are from 1998.
-The rarity of such cases further shows how critics scores increase over
-time.
+giving very high or very low reviews.
 
 ![](index_files/figure-markdown_strict/Audience%20vs%20Critics-1.png)![](index_files/figure-markdown_strict/Audience%20vs%20Critics-2.png)
 
@@ -113,6 +114,13 @@ time.
     ##   <chr>                      <dbl>            <dbl> <dbl>            <dbl>
     ## 1 Hidden Figures (…           93.0              262  2017             93.0
     ## 2 The Dark Knight …           94.0              327  2008             94.0
+
+These tibbles document rare cases where the audience score matched the
+critic score and cases where the audience score was higher than the
+critic score. Between these two parameter sets, there are only five
+films, and all of the films with higher audience scores are from 1998.
+The rarity of such cases further shows how critics scores increase over
+time.
 
     ## # A tibble: 3 x 5
     ##   Title             `Critic Score` `Critic Reviews`  Year `Audience Score`

@@ -11,8 +11,6 @@ library(stringr)
 library(rvest)
 ```
 
-### Emily Schrader and Katie Voegele
-
 ##Are Movies Getting Better?
 
   
@@ -683,6 +681,54 @@ ScoreCompare %>%
 ScoreCompare %>%
   filter(Audience_Review > Score)
 
+Popular_movies %>%
+  group_by(Year) %>%
+   mutate(
+    MaxReviewers = max(Review_num),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_line(aes(y = AverageScore), color = "maroon") +
+  geom_line(aes(y = MaxReviewers), color = "navy")
+
+Popular_movies %>%
+  mutate(
+    AdjustedReviewers = ((rescale01(Review_num))*100)
+  ) %>%
+  group_by(Year) %>%
+   mutate(
+    MaxReviewers = max(AdjustedReviewers),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_line(aes(y = AverageScore), color = "maroon") +
+  geom_line(aes(y = MaxReviewers), color = "navy")
+
+Popular_movies %>%
+  mutate(
+    AdjustedReviewers = ((rescale01(Review_num))*100)
+  ) %>%
+  group_by(Year) %>%
+   mutate(
+    MaxReviewers = max(AdjustedReviewers),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_jitter(aes(y = Score),width = 0.08, alpha = .3, color = "red") +
+  geom_line(aes(y = AverageScore), color = "maroon") +
+  geom_jitter(aes( y = AdjustedReviewers), width = .1, alpha = .3, color = "blue") +
+  geom_line(aes(y = MaxReviewers), color = "navy")+
+  ggtitle("Scores and Review Numbers by Year")
+
 ```
 
 ```{r Critic Score Plots, echo= FALSE, message= FALSE}
@@ -736,6 +782,8 @@ Popular_movies %>%
 #Density plot showing the distribution for each group of 2-3 years
 ```
 
+The average number of reviewers also goes up over time. What is interesting about this data is that we don't see a spike in the data at any point. Rotten Tomatoes was launched in August of 1998 and has only grown since then, and our data does reflect that throught the increase in review numbers. The increase is not as large as one may expect, with Rotten Tomatoes being a go-to review site. This suggests that perhaps the number of reviews depends on the movie itself more than when the movie was released. Or, that Rotten Tomatoes has gained popularity and notariety, but has not grown in its reveiwer numbers. Either way, the number of reviewers does not seem to have an impact in scores, and does not determine which movies are in the top 100 for each year.
+
 ```{r Reviewer Plots, echo= FALSE, message = FALSE}
 Popular_movies %>%
   filter( Year != 2018) %>%
@@ -769,9 +817,26 @@ Popular_movies %>%
   ylab("Reviews")
 ```
 
-The average number of reviewers also goes up over time. What is interesting about this data is that we don't see a spike in the data at any point. Rotten Tomatoes was launched in August of 1998 and has only grown since then, and our data does reflect that throught the increase in review numbers. The increase is not as large as one may expect, with Rotten Tomatoes being a go-to review site. This suggests that perhaps the number of reviews depends on the movie itself more than when the movie was released. Or, that Rotten Tomatoes has gained popularity and notariety, but has not grown in its reveiwer numbers. Either way, the number of reviewers does not seem to have an impact in scores, and does not determine which movies are in the top 100 for each year.
+These plots compare the number of reviewers to the score, showing their increase over time. The first plot shows the maximum number of reviewers, where the second shows the average number of reviewers. The thrid graph is scaled so that you can see both sets of data together, using the average reviewers. The red data shows scores, and the blue data shows the number of reviewers. 
 
 ```{r Comparing plots, echo= FALSE, message= FALSE}
+Popular_movies %>%
+  mutate(
+    AdjustedReviewers = ((rescale01(Review_num))*100)
+  ) %>%
+  group_by(Year) %>%
+   mutate(
+    MaxReviewers = max(AdjustedReviewers),
+    AverageScore = mean(Score)
+  ) %>%
+  type_convert() %>%
+  ungroup() %>%
+  filter( Year != 2018)%>%
+  ggplot(aes(x = Year)) +
+  geom_line(aes(y = AverageScore), color = "maroon") +
+  geom_line(aes(y = MaxReviewers), color = "navy")
+#Maximum number of reviewers
+
 Popular_movies %>%
   group_by(Year) %>%
    mutate(
@@ -786,7 +851,6 @@ Popular_movies %>%
   geom_line(aes(y = AverageReviewers), color = "navy")+
   ggtitle("Scores and Review Numbers by Year")
 #Line plot comparing Reviews (Navy) and Scores (maroon)
-
 
 Popular_movies %>%
   mutate(
@@ -819,7 +883,7 @@ Popular_movies%>%
 ```
 
 The plots below compare a select group of movies' critic scores to their audience scores. To get the audience scores, we had to look ta each movie's page individually, so we only did the top 20 movies 2017, 2008, and 1998. Critics scores were cosistently higher than audience scores, and audiences even had outliers that were extremely low in 1998 and 2017 (Antz and Star Wars). The box plot shows the lower scores as outliers in better detail. They are far lower than the lowest critic score. This tells us that audience score is not a large factor in how great the movies are, as both Antz and Star Wars are in the top ten of their respective years. This discrepancy was a surprise, but we suspect that audience scores are brought down by people being more opinionated; only giving very high or very low reviews.  
-The tibbles document rare cases where the audience score matched the critic score and cases where the audience score was higher than the critic score. Between these two parameter sets, there are only five films, and all of the films with higher audience scores are from 1998. The rarity of such cases further shows how critics scores increase over time.
+
 
 ```{r Audience vs Critics, echo= FALSE, message= FALSE}
 ScoreCompare %>%
@@ -855,7 +919,7 @@ ScoreCompare %>%
 #I put images of these movies in the folder. "~/Mscs 264 S18/Inclass/Schrader_Voegele/__59dd139766efd.jpg" and "~/Mscs 264 S18/Inclass/Schrader_Voegele/13349231_f520.jpg"
 ```
 
-
+These tibbles document rare cases where the audience score matched the critic score and cases where the audience score was higher than the critic score. Between these two parameter sets, there are only five films, and all of the films with higher audience scores are from 1998. The rarity of such cases further shows how critics scores increase over time.
 
 ```{r, echo= FALSE, message= FALSE}
 ScoreCompare %>%
