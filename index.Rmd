@@ -16,7 +16,7 @@ library(rvest)
 
   
 Our analysis focussed on lists of movies from Rotten Tomatoes giving the top 100 movies in any given year. We took the most recent 20 of these lists with their critic scores and number of reviews in order to ask the following questions: Have the scores of movies increased over time? If so, why? Does the number of reviews come into play? Audience score? how do movies with a 100% critic score fare in other categories?  
-Our goal in this analysis is not to difinitvely answer if movies have gotten better, but to see if there is statistical backing to the trend of recent movies getting high scores. Are the critics giving higher scores? Are audiences getting more involved in scoring online?  
+Our goal in this analysis is not to difinitvely answer if movies have gotten better, but to see if there is statistical backing to the trend of recent movies getting high scores. Are the critics giving higher scores? Are audiences getting more involved in scoring online?   
 Are movies getting better?
 
 
